@@ -1,15 +1,16 @@
 function(doc, req) {
-  var airports = doc.airports;
-  airports.shift();
+  var airportsData = doc.airports;
+  airportsData.shift();
+  var airports = require('functions/data').dataToAirports(airportsData);
   var geoJson = airports.map(function(airport) {
     return {
       geometry: {
         type: "Point",
-        coordinates: [parseFloat(airport[2]), parseFloat(airport[1])]
+        coordinates: airport.coordinates()
       },
       type: "Feature",
       attributes: {
-        name: airport[0]
+        name: airport.name()
       }
     };
   });
