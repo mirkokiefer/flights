@@ -58,7 +58,17 @@ map.add(po.geoJson().features([{
   "properties": {
     "width": 8
   }
-}, {
+}]).on("load",
+  po.stylist()
+  .style("stroke-width", function (d) {
+    return d.properties.width;
+  })
+  .style("fill-opacity", function (d) {
+    return 0;
+  })
+));
+
+map.add(po.geoJson().features([{
   "geometry": {
     "coordinates": [-122.289365, 37.816873],
     "type": "Point"
@@ -76,20 +86,12 @@ map.add(po.geoJson().features([{
 }]).on("load",
   po.stylist()
   .style("stroke-width", function (d) {
-    if (d.geometry.type == 'Point') {
-      return 3;
-    } else {
-      return d.properties.width;
-    };
+    return 3;
   })
   .style("fill-opacity", function (d) {
-    if (d.geometry.type == 'Point') {
-      return 0.5
-    } else {
-      return 0
-    };
-
+    return 0.5;
   })
+  .attr("r", 8)
 ));
 
 map.add(po.compass().pan("none"));
