@@ -1,0 +1,11 @@
+"carrier";"origin";"destination";"year";"passengers"
+"CM";"IAD";"PTY";2010;29180
+"CM";"JFK";"PTY";2010;44987
+"CM";"LAX";"PTY";2010;66095
+"CM";"MCO";"PTY";2010;88299
+"CM";"MIA";"PTY";2010;126017
+"CM";"PTY";"IAD";2010;32648
+"CM";"PTY";"JFK";2010;43801
+"CM";"PTY";"LAX";2010;65539
+"CM";"PTY";"MCO";2010;90496
+"CM";"PTY";"MIA";2010;119916
