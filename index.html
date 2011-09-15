@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src="./polymaps.min.js"></script>
+    <style type="text/css">
+
+@import url("./example.css");
+
+.layer path {
+  fill: lightsteelblue;
+  fill-opacity: .5;
+  stroke: steelblue;
+}
+
+.layer circle {
+  fill: lightcoral;
+  fill-opacity: .5;
+  stroke: brown;
+}
+
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+var po = org.polymaps;
+
+var map = po.map().container(document.body.appendChild(po.svg("svg"))).center({
+  lat: 37.787,
+  lon: -122.228
+}).zoom(12).add(po.interact());
+
+map.add(po.image().url(po.url("http://{S}tile.cloudmade.com" + "/3ab63d0e77be45a9a3d16565152f2eec" // http://cloudmade.com/register
++ "/998/256/{Z}/{X}/{Y}.png").hosts(["a.", "b.", "c.", ""])));
+
+map.add(po.geoJson().features([{
+  "geometry": {
+    "coordinates": [
+      [-122.289365, 37.816873],
+      [-122.273176, 37.812709],
+      [-122.191530, 37.810804]
+    ],
+    "type": "LineString"
+  },
+  "type": "Feature",
+  "properties": {
+    "width": 5
+  }
+}, {
+  "geometry": {
+    "coordinates": [
+      [-122.191530, 37.810804],
+      [-122.193176, 37.712709]
+    ],
+    "type": "LineString"
+  },
+  "type": "Feature",
+  "properties": {
+    "width": 8
+  }
+}]).on("load",
+  po.stylist()
+  .style("stroke-width", function (d) {
+    return d.properties.width;
+  })
+  .style("fill-opacity", function (d) {
+    return 0;
+  })
+));
+
+map.add(po.geoJson().features([{
+  "geometry": {
+    "coordinates": [-122.289365, 37.816873],
+    "type": "Point"
+  }
+}, {
+  "geometry": {
+    "coordinates": [-122.191530, 37.810804],
+    "type": "Point"
+  }
+}, {
+  "geometry": {
+    "coordinates": [-122.193176, 37.712709],
+    "type": "Point"
+  }
+}]).on("load",
+  po.stylist()
+  .style("stroke-width", function (d) {
+    return 3;
+  })
+  .style("fill-opacity", function (d) {
+    return 0.5;
+  })
+  .attr("r", 8)
+));
+
+map.add(po.compass().pan("none"));
+
+    </script>
+    <span id="copy">
+      &copy; 2010
+      <a href="http://www.cloudmade.com/">CloudMade</a>,
+      <a href="http://www.openstreetmap.org/">OpenStreetMap</a> contributors,
+      <a href="http://creativecommons.org/licenses/by-sa/2.0/">CCBYSA</a>.
+    </span>
+  </body>
+</html>
