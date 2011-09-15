@@ -26,7 +26,7 @@ function(doc, req) {
       },
       "type": "Feature",
       "properties": {
-        "width": flight.passengers()/10000
+        "width": flight.passengers()/15000
       }
     }
   });
