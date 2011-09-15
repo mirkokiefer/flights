@@ -3,9 +3,9 @@ import sys
 import csv
 import couchdbkit
 
-dbDomain = "http://livelycode.iriscouch.com/"
-dbID = "flights_db"
-docID = "flight_doc"
+dbDomain = "http://localhost:5984/"
+dbID = "flights"
+docID = "data"
 
 # create server proxy
 server = couchdbkit.Server(uri=dbDomain)
